@@ -37,3 +37,6 @@ The app will be availiable on http://localhost:8000
 8. GET `/api/hackathons/user/submissions/<int:pk>/` - Get all submissions of current user in a hackathon
 9. POST `/api/hackathons/user/submissions/<int:pk>/` - Create a submission for current user in a hackathon
 10. GET `/api/hackathons/user/participating/` - Get all hackathons current user is participating in
+11. POST `/auth/register/` - Register a new user
+12. POST `/auth/login/` - Login a user
+13. POST `/auth/login/refresh` - Refresh a user's access token
