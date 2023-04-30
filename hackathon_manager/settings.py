@@ -84,7 +84,7 @@ DATABASES = {
         'default': {
             'ENGINE': os.getenv('DB_URL'),
 
-            'NAME': 'hackathon',
+            'NAME': 'hackathondb',
 
             'USER': os.getenv('DB_USER'),
 
