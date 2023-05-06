@@ -33,10 +33,12 @@ The app will be availiable on http://localhost:8000
 4. PUT `/api/hackathons/<hackathon_id>` - Update a hackathon
 5. DELETE `/api/hackathons/<hackathon_id>` - Delete a hackathon
 6. GET `/api/hackathons/participate/<int:pk>/` - Get all hackathons current user is participating in
-7. PUT `/api/hackathons/participate/<int:pk>/` - Update participation status of current user in a hackathon
+7. POST `/api/hackathons/participate/<int:pk>/` - Update participation status of current user in a hackathon
 8. GET `/api/hackathons/user/submissions/<int:pk>/` - Get all submissions of current user in a hackathon
 9. POST `/api/hackathons/user/submissions/<int:pk>/` - Create a submission for current user in a hackathon
 10. GET `/api/hackathons/user/participating/` - Get all hackathons current user is participating in
 11. POST `/auth/register/` - Register a new user
 12. POST `/auth/login/` - Login a user
 13. POST `/auth/login/refresh` - Refresh a user's access token
+14. GET `hackathons/user/atleastone/` -  Get all the users(participants) who have enrolled in atleast one hackathon
+15. GET `hackathons/user/notone/` -  Get all the users(participants) who have not enrolled in a single hackathon

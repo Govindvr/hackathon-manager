@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 from .models import Hackathon , HackathonParticipant, Submission
-from .serializers import HackathonSerializer, HackathonParticipantSerializer, SubmissionSerializer
+from .serializers import HackathonSerializer, HackathonParticipantSerializer, SubmissionSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework import status
 from rest_framework.permissions import BasePermission, SAFE_METHODS
@@ -161,3 +161,21 @@ class UserHackathonList(APIView):
         serializer = HackathonSerializer(hackathons, 
                                          many=True)
         return Response(serializer.data)
+    
+class UserAtleastOne(APIView):
+    serializer_class = HackathonSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request):
+        users = User.objects.filter(participating_hackathons__isnull=False).distinct()
+        serilizer = UserSerializer(users, many=True)
+        return Response(serilizer.data)
+    
+class UserNotAtleastOne(APIView):
+    serializer_class = HackathonSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request):
+        users = User.objects.filter(participating_hackathons__isnull=True).distinct()
+        serilizer = UserSerializer(users, many=True)
+        return Response(serilizer.data)
